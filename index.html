@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD</title>
+    <link rel="stylesheet" href="./styles/index.css">
+</head>
+<body>
+
+    <h1>
+        CRUD - To Do List
+    </h1>
+
+
+    <form action="" id="form-todo">
+
+        <div class="input-container">
+            <input class="input" type="text" name="title" id="title" placeholder="Title">
+        </div>
+
+        <div class="input-container">
+            <textarea class="input" name="description" id="description" cols="30" rows="10" placeholder="Description"></textarea>
+        </div>
+
+        <div class="input-container">
+            <select class="input" name="assign" id="assign">
+                <option value="0">Select an user</option>
+            </select>
+        </div>
+
+        <input type="text" hidden value="" id="id-todo">
+
+    </form>
+
+    <br>
+
+    <div class="actions">
+        <button class="btn" id="logout-btn">Logout</button>
+        <button class="btn" id="add-todo-btn">Add Todo</button>
+        <button class="btn" id="reload">Reload</button>
+    </div>
+
+    <br>
+
+    <div class="todos-container">
+        <div class="todo">
+            <h3 class="todo-title">Title</h3>
+            <p class="todo-description">Description</p>
+            <p class="todo-assign">
+                <span class="todo-assign-title">Assign to: </span>
+                <span class="todo-assign-username">Username</span>
+            </p>
+            <div class="todo-actions">
+                <button class="btn btn-edit">Edit</button>
+                <button class="btn btn-delete">Delete</button>
+            </div>
+        </div>
+    </div>
+    
+    <script type="module" src="./javascript/models/user-model.js"></script>
+    <script type="module" src="./javascript/models/todo-model.js"></script>
+    <script type="module" src="./javascript/services/todo-service.js"></script>
+    <script type="module" src="./javascript/services/user-service.js"></script>
+    <script type="module" src="./javascript/index.js"></script>
+
+    <script>
+        function todoUpdate(id) {
+            const toDos = localStorage.getItem('toDos') || [];
+            const toDo = JSON.parse(toDos).find(todo => todo.id === id);
+            document.querySelector('#id-todo').value = toDo.id;
+            document.querySelector('#title').value = toDo.title;
+            document.querySelector('#description').value = toDo.description;
+            document.querySelector('#assign').value = toDo.userId;
+        }
+
+        function todoDelete(id) {
+            const toDos = JSON.parse(localStorage.getItem('toDos')) || [];
+            const index = toDos.findIndex(toDo => toDo.id === id);
+            toDos.splice(index, 1);
+            localStorage.setItem('toDos', JSON.stringify(toDos));
+            location.reload();
+        }
+    </script>
+
+</body>
+</html>

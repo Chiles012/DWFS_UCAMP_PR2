@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - CRUD</title>
+    <link rel="stylesheet" href="./styles/login.css">
+</head>
+<body>
+    
+    <div class="container-form" id="login">
+        <form action="" id="login-form">
+            <h1>
+                Login
+            </h1>
+            <div class="input-container">
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="input-container">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="input-container">
+                <button type="submit" id="login-btn">Login</button>
+            </div>
+            <p class="no-account">
+                ¿No tienes cuenta?
+            </p>
+        </form>
+    </div>
+
+    <div class="container-form" id="register" class="hidden">
+        <form action="" id="register-form">
+            <h1>
+                Registro
+            </h1>
+            <div class="input-container">
+                <input type="email" name="email" id="email" placeholder="Email">
+            </div>
+            <div class="input-container">
+                <input type="text" name="name" id="name" placeholder="Username">
+            </div>
+            <div class="input-container">
+                <input type="password" name="password" id="password" placeholder="Password">
+            </div>
+            <div class="input-container">
+                <button type="submit" id="register-btn">Registrarme</button>
+            </div>
+            <p class="has-account">
+                ¿Ya tienes cuenta?
+            </p>
+        </form>
+    </div>
+
+    <script type="module" src="./javascript/models/user-model.js"></script>
+    <script type="module" src="./javascript/services/user-service.js"></script>
+    <script type="module" src="./javascript/login.js"></script>
+
+</body>
+</html>
